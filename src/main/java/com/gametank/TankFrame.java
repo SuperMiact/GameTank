@@ -29,23 +29,70 @@ public class TankFrame extends Frame {
 
     @Override
     public void paint(Graphics g) {
-        System.out.println("paint");
         g.fillRect(x , y ,50,50);
 //        x += 10;
 //        y += 10;
     }
 
     class MyKeyListener extends KeyAdapter {
+
+        boolean bL = false;
+        boolean bR = false;
+        boolean bU = false;
+        boolean bD = false;
+
         @Override
+        //这个方法是系统调用我们，所以系统会通知我们哪个键被按下了
+        //既然是系统调用我们自己的方法，那系统会给我们传一个KeyEvent这个事件
         public void keyPressed(KeyEvent e) {
-            x += 200;
+            //哪个键被按下了，把它的代码取出来
+            int key = e.getKeyCode();
+            switch (key){
+                //向左 向右 向上 向下
+                case KeyEvent.VK_LEFT:
+                    bL = true;
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    bR = true;
+                    break;
+                case KeyEvent.VK_UP:
+                    bU = true;
+                    break;
+                case KeyEvent.VK_DOWN:
+                    bD = true;
+                    break;
+                default:
+                    break;
+            }
+
+
+            //x += 200;
             //重画（刷新），会默认调用 paint
-            repaint();
+            //repaint();
         }
 
         @Override
+        //按键弹起
         public void keyReleased(KeyEvent e) {
-            System.out.println("key released");
+            //哪个键被按下了，把它的代码取出来
+            int key = e.getKeyCode();
+            switch (key){
+                //向左 向右 向上 向下
+                case KeyEvent.VK_LEFT:
+                    bL = false;
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    bR = false;
+                    break;
+                case KeyEvent.VK_UP:
+                    bU = false;
+                    break;
+                case KeyEvent.VK_DOWN:
+                    bD = false;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
