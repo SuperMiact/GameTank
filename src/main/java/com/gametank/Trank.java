@@ -33,9 +33,10 @@ public class Trank {
     }
 
     public void paint(Graphics g){
-        //TODO Auto-generated method stub
+        Color color = g.getColor();
+        g.setColor(Color.YELLOW);
         g.fillRect(x,y,50,50);
-
+        g.setColor(color);
         move();
 
     }
