@@ -9,11 +9,14 @@ public class Trank {
 
     private boolean moving = false;
 
-    public Trank(int x,int y,Dir dir){
+    private TankFrame tf = null;
+
+    public Trank(int x,int y,Dir dir,TankFrame tf){
         super();
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.tf = tf;
     }
 
     public Dir getDir(){
@@ -57,5 +60,9 @@ public class Trank {
                 y+=SPEED;
                 break;
         }
+    }
+
+    public void fire() {
+        tf.b = new Bullet(this.x,this.y,this.dir);
     }
 }
