@@ -2,7 +2,7 @@ package com.gametank;
 
 import java.awt.*;
 
-public class Trank {
+public class Tank {
     private int x, y;
     private Dir dir = Dir.DOWN;
     private static final int SPEED = 5;
@@ -11,7 +11,7 @@ public class Trank {
 
     private TankFrame tf = null;
 
-    public Trank(int x,int y,Dir dir,TankFrame tf){
+    public Tank(int x, int y, Dir dir, TankFrame tf){
         super();
         this.x = x;
         this.y = y;
