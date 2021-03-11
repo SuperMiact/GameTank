@@ -9,7 +9,7 @@ public class Main {
             tankFrame.tanks.add(new Tank(50+i*80,200,Dir.DOWN,Group.BAD,tankFrame));
 //            tankFrame.tanks.get(tankFrame.tanks.size()-1).setMoving(true);
         }
-    
+
         while (true){
             Thread.sleep(50);
             tankFrame.repaint();
