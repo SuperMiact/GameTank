@@ -12,7 +12,7 @@ public class Tank {
     public static int WIDTH = ResourceMgr.tankD.getWidth();
     public static int HEIGHT = ResourceMgr.tankD.getHeight();
 
-    private boolean moving = true;
+    private boolean moving = false      ;
     private TankFrame tf = null;
     private boolean living = true;
     private Group group = Group.BAD;

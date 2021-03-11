@@ -71,8 +71,8 @@ public class Bullet {
         if (x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) living = false;
     }
 
-    public void collideWith(Tank tank) {
-        if (this.group==tank.getGroup()) return;
+    public boolean collideWith(Tank tank) {
+        if (this.group==tank.getGroup()) return false   ;
 
         //TODO:用一个rect来记录子弹的位置
         Rectangle rect1 = new Rectangle(this.x,this.y,WIDTH,HEIGHT);
@@ -81,7 +81,9 @@ public class Bullet {
         if (rect1.intersects(rect2)){
             tank.die();
             this.die();
+            return true;
         }
+        return false;
     }
 
     private void die() {
