@@ -1,8 +1,10 @@
 package com.gametank;
 
 import java.awt.*;
+import java.util.Random;
 
 public class Tank {
+    private Random random = new Random();
     private int x, y;
     private Dir dir = Dir.DOWN;
     private static final int SPEED = 5;
@@ -10,15 +12,17 @@ public class Tank {
     public static int WIDTH = ResourceMgr.tankD.getWidth();
     public static int HEIGHT = ResourceMgr.tankD.getHeight();
 
-    private boolean moving = false;
+    private boolean moving = true;
     private TankFrame tf = null;
     private boolean living = true;
+    private Group group = Group.BAD;
 
-    public Tank(int x, int y, Dir dir, TankFrame tf){
+    public Tank(int x, int y, Dir dir,Group group, TankFrame tf){
         super();
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.group = group;
         this.tf = tf;
     }
 
@@ -52,6 +56,14 @@ public class Tank {
 
     public void setMoving(boolean moving) {
         this.moving = moving;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     public void paint(Graphics g){
@@ -91,12 +103,14 @@ public class Tank {
                 y+=SPEED;
                 break;
         }
+        if (random.nextInt(10)>8) this.fire();
     }
 
     public void fire() {
         int bx = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
         int by = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
-        tf.bullets.add(new Bullet(bx,by,this.dir,this.tf));
+
+        tf.bullets.add(new Bullet(bx,by,this.dir,this.group,this.tf));
     }
 
     public void die() {
