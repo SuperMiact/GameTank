@@ -10,7 +10,7 @@ public class Bullet {
     private int x ,y ;
     private Dir dir;
 
-    private boolean live = true;
+    private boolean living = true;
     TankFrame tf = null;
     private Group group = Group.BAD;
 
@@ -31,7 +31,7 @@ public class Bullet {
     }
 
     public void paint(Graphics g){
-        if (!live){
+        if (!living){
             tf.bullets.remove(this);
         }
 
@@ -68,7 +68,7 @@ public class Bullet {
                 y+=SPEED;
                 break;
         }
-        if (x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) live = false;
+        if (x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) living = false;
     }
 
     public void collideWith(Tank tank) {
@@ -85,6 +85,6 @@ public class Bullet {
     }
 
     private void die() {
-        this.live=false;
+        this.living =false;
     }
 }

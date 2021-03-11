@@ -14,6 +14,9 @@ public class TankFrame extends Frame {
     Tank myTank = new Tank(200,500,Dir.DOWN,Group.GOOD,this);
     List<Bullet> bullets = new ArrayList<Bullet>();
     List<Tank> tanks = new ArrayList<Tank>();
+    Explode explode = new Explode(100,100,this);
+
+
     static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
 
     public TankFrame(){
@@ -63,12 +66,14 @@ public class TankFrame extends Frame {
             tanks.get(i).paint(g);
         }
 
+        //每颗子弹都尝试去和每辆坦克相撞，如果是队友，那就撞下一个去
         for (int i = 0; i < bullets.size(); i++) {
             for (int j = 0; j < tanks.size(); j++) {
                 bullets.get(i).collideWith(tanks.get(j));
             }
-
         }
+
+        explode.paint(g);
 
     }
 
