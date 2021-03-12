@@ -17,7 +17,7 @@ public class TankFrame extends Frame {
     Explode explode = new Explode(100,100,this);
 
 
-    static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
+    static final int GAME_WIDTH = 1080, GAME_HEIGHT = 960;
 
     public TankFrame(){
         setSize(GAME_WIDTH,GAME_HEIGHT);
@@ -144,10 +144,18 @@ public class TankFrame extends Frame {
             else {
                 myTank.setMoving(true);
 
-                if(bL) myTank.setDir(Dir.LEFT);
-                if(bR) myTank.setDir(Dir.RIGHT);
-                if(bU) myTank.setDir(Dir.UP);
-                if(bD) myTank.setDir(Dir.DOWN);
+                if(bL) {
+                    myTank.setDir(Dir.LEFT);
+                }
+                if(bR) {
+                    myTank.setDir(Dir.RIGHT);
+                }
+                if(bU) {
+                    myTank.setDir(Dir.UP);
+                }
+                if(bD) {
+                    myTank.setDir(Dir.DOWN);
+                }
             }
         }
     }

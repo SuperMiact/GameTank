@@ -16,11 +16,11 @@ public class ImageTest {
     @Test
     public void t1(){
         try {
-            BufferedImage image = ImageIO.read(new File("src/main/resources/images/missileD.gif"));
+            BufferedImage image = ImageIO.read(new File("src/main/resources/images/bulletU.png"));
             //判断image不为空
             assertNotNull(image);
 
-            BufferedImage image2 = ImageIO.read(ImageTest.class.getClassLoader().getResourceAsStream("images/missileD.gif"));
+            BufferedImage image2 = ImageIO.read(ImageTest.class.getClassLoader().getResourceAsStream("images/bulletU.png"));
             //this.getClass()
             assertNotNull(image2);
 

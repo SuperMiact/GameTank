@@ -48,6 +48,8 @@ public class Bullet {
             case DOWN:
                 g.drawImage(ResourceMgr.bulletU,x,y,null);
                 break;
+            default:
+                break;
         }
 
         move();
@@ -67,12 +69,18 @@ public class Bullet {
             case DOWN:
                 y+=SPEED;
                 break;
+            default:
+                break;
         }
-        if (x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) living = false;
+        if (x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) {
+            living = false;
+        }
     }
 
     public void collideWith(Tank tank) {
-        if (this.group==tank.getGroup()) return;
+        if (this.group==tank.getGroup()) {
+            return;
+        }
 
         //TODO:用一个rect来记录子弹的位置
         Rectangle rect1 = new Rectangle(this.x,this.y,WIDTH,HEIGHT);

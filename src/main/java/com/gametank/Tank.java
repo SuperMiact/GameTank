@@ -88,7 +88,9 @@ public class Tank {
     }
 
     private void move(){
-        if (!moving) return;
+        if (!moving) {
+            return;
+        }
         switch (dir){
             case LEFT:
                 x-=SPEED;
@@ -103,7 +105,9 @@ public class Tank {
                 y+=SPEED;
                 break;
         }
-        if (random.nextInt(10)>8) this.fire();
+        if (random.nextInt(10)>8) {
+            this.fire();
+        }
     }
 
     public void fire() {
