@@ -83,6 +83,8 @@ public class Tank {
             case DOWN:
                 g.drawImage(ResourceMgr.tankD,x,y,null);
                 break;
+            default:
+                break;
         }
         move();
     }
@@ -104,10 +106,20 @@ public class Tank {
             case DOWN:
                 y+=SPEED;
                 break;
+            default:
+                break;
         }
-        if (random.nextInt(10)>8) {
+        if (this.group == Group.BAD && random.nextInt(100) > 95) {
             this.fire();
         }
+        if (this.group == Group.BAD && random.nextInt(100) > 95){
+            randomDir();
+        }
+    }
+
+    private void randomDir() {
+        //[LEFT,UP,RIGHT,DOWN] 随机取一个下标，随机换一个方向
+        this.dir = Dir.values()[random.nextInt(4)];
     }
 
     public void fire() {
