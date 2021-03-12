@@ -63,7 +63,9 @@ public class TankFrame extends Frame {
             bullets.get(i).paint(g);
         }
         for (int i = 0 ;i<tanks.size();i++){
-            tanks.get(i).paint(g);
+            if(!tanks.get(i).paint(g)){
+                i--;
+            }
         }
 
         //每颗子弹都尝试去和每辆坦克相撞，如果是队友，那就撞下一个去

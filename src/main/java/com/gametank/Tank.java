@@ -66,9 +66,10 @@ public class Tank {
         this.group = group;
     }
 
-    public void paint(Graphics g){
+    public boolean paint(Graphics g){
         if (!living){
             tf.tanks.remove(this);
+            return false;
         }
         switch (dir){
             case LEFT:
@@ -85,6 +86,7 @@ public class Tank {
                 break;
         }
         move();
+        return true;
     }
 
     private void move(){
