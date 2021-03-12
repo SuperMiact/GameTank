@@ -7,6 +7,8 @@ public class Bullet {
     public static int WIDTH = ResourceMgr.bulletD.getWidth();
     public static int HEIGHT = ResourceMgr.bulletD.getHeight();
 
+    Rectangle rect = new Rectangle();
+
     private int x ,y ;
     private Dir dir;
 
@@ -20,6 +22,11 @@ public class Bullet {
         this.dir = dir;
         this.group = group;
         this.tf = tf;
+
+        rect.x = this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
+        rect.height = HEIGHT;
     }
 
     public Group getGroup() {
@@ -72,6 +79,11 @@ public class Bullet {
             default:
                 break;
         }
+
+        //更新rect,这样矩形就跟着子弹在不断移动，后面就不用在new了
+        rect.x = this.x;
+        rect.y = this.y;
+
         if (x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) {
             living = false;
         }
@@ -82,11 +94,7 @@ public class Bullet {
             return;
         }
 
-        //TODO:用一个rect来记录子弹的位置
-        Rectangle rect1 = new Rectangle(this.x,this.y,WIDTH,HEIGHT);
-        Rectangle rect2 = new Rectangle(tank.getX(),tank.getY(),tank.WIDTH,tank.HEIGHT);
-
-        if (rect1.intersects(rect2)){
+        if (rect.intersects(tank.rect)){
             tank.die();
             this.die();
             int ex = tank.getX() + Tank.WIDTH/2 - Explode.WIDTH/2;

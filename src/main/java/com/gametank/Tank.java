@@ -9,6 +9,8 @@ public class Tank {
     private Dir dir = Dir.DOWN;
     private static final int SPEED = 5;
 
+    Rectangle rect = new Rectangle();
+
     public static int WIDTH = ResourceMgr.goodTankD.getWidth();
     public static int HEIGHT = ResourceMgr.goodTankD.getHeight();
 
@@ -24,6 +26,11 @@ public class Tank {
         this.dir = dir;
         this.group = group;
         this.tf = tf;
+
+        rect.x = this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
+        rect.height = HEIGHT;
     }
 
     public int getX() {
@@ -117,6 +124,9 @@ public class Tank {
         }
 
         boundsCheck();
+
+        rect.x = this.x;
+        rect.y = this.y;
     }
 
     private void boundsCheck() {
