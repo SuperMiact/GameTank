@@ -136,7 +136,6 @@ public class Tank {
         if (this.y < 30){
             y = 30;
         }
-        System.out.println(y);
         if (this.x > TankFrame.GAME_WIDTH-Tank.WIDTH){
             x = TankFrame.GAME_WIDTH-Tank.WIDTH;
         }
