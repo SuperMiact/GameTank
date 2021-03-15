@@ -7,7 +7,7 @@ public class Tank {
     private Random random = new Random();
     private int x, y;
     private Dir dir = Dir.DOWN;
-    private static final int SPEED = 5;
+    private static final int SPEED = PropertyMgr.getInt("tankSpeed");
 
     Rectangle rect = new Rectangle();
 

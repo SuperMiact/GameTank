@@ -20,4 +20,11 @@ public class PropertyMgr {
         }
         return props.get(key);
     }
+
+    public static Integer getInt(String key){
+        if (props == null){
+            return null;
+        }
+        return Integer.parseInt((String) props.get(key));
+    }
 }

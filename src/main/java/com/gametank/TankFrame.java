@@ -16,7 +16,7 @@ public class TankFrame extends Frame {
     List<Tank> tanks = new ArrayList<Tank>();
     List<Explode> explodes = new ArrayList<Explode>();
 
-    static final int GAME_WIDTH = 1080, GAME_HEIGHT = 960;
+    static final int GAME_WIDTH = PropertyMgr.getInt("gameWidth"), GAME_HEIGHT = PropertyMgr.getInt("gameHeight");
 
     public TankFrame(){
         setSize(GAME_WIDTH,GAME_HEIGHT);
