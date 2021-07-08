@@ -1,9 +1,12 @@
-package com.gametank;
+package com.gametank.util;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
+/**
+ * 处理图片类
+ */
 public class ResourceMgr {
     public static BufferedImage goodTankL,goodTankU,goodTankR,goodTankD;
     public static BufferedImage badTankL,badTankU,badTankR,badTankD;

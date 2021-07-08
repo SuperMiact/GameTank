@@ -1,4 +1,4 @@
-package com.gametank;
+package com.gametank.model;
 
 //只能取这四个方向之一
 public enum Dir {

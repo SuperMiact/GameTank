@@ -1,5 +1,12 @@
 package com.gametank;
 
+import com.gametank.model.Bullet;
+import com.gametank.model.Dir;
+import com.gametank.model.Group;
+import com.gametank.model.Tank;
+import com.gametank.util.Explode;
+import com.gametank.util.PropertyMgr;
+
 import java.awt.*;
 import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
@@ -11,12 +18,12 @@ import java.util.List;
 
 public class TankFrame extends Frame {
 
-    Tank myTank = new Tank(200,500,Dir.DOWN,Group.GOOD,this);
+    Tank myTank = new Tank(200,500, Dir.DOWN, Group.GOOD,this);
     List<Bullet> bullets = new ArrayList<Bullet>();
     List<Tank> tanks = new ArrayList<Tank>();
     List<Explode> explodes = new ArrayList<Explode>();
 
-    static final int GAME_WIDTH = PropertyMgr.getInt("gameWidth"), GAME_HEIGHT = PropertyMgr.getInt("gameHeight");
+    public static final int GAME_WIDTH = PropertyMgr.getInt("gameWidth"), GAME_HEIGHT = PropertyMgr.getInt("gameHeight");
 
     public TankFrame(){
         setSize(GAME_WIDTH,GAME_HEIGHT);
@@ -32,6 +39,18 @@ public class TankFrame extends Frame {
                 System.exit(0);
             }
         });
+    }
+
+    public List<Bullet> getBullets() {
+        return bullets;
+    }
+
+    public List<Tank> getTanks() {
+        return tanks;
+    }
+
+    public List<Explode> getExplodes() {
+        return explodes;
     }
 
     Image offScreenImage = null;
@@ -53,9 +72,10 @@ public class TankFrame extends Frame {
     public void paint(Graphics g) {
         Color color = g.getColor();
         g.setColor(Color.RED);
+        g.setFont(new Font("微软雅黑",Font.BOLD,16));
         g.drawString("子弹的数量："+bullets.size(),10,60);
-        g.drawString("敌人的数量："+tanks.size(),10,80);
-        g.drawString("爆炸的数量："+explodes.size(),10,100);
+        g.drawString("敌人的数量："+tanks.size(),10,90);
+        g.drawString("爆炸的数量："+explodes.size(),10,120);
         g.setColor(color);
 
         myTank.paint(g);
@@ -72,7 +92,7 @@ public class TankFrame extends Frame {
         //每颗子弹都尝试去和每辆坦克相撞，如果是队友，那就撞下一个去
         for (int i = 0; i < bullets.size(); i++) {
             for (int j = 0; j < tanks.size(); j++) {
-                bullets.get(i).collideWith(tanks.get(j));
+                bullets.get(i).collideWith(bullets.get(i),tanks.get(j));
             }
         }
     }

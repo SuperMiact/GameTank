@@ -1,8 +1,11 @@
-package com.gametank;
+package com.gametank.util;
 
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * 加载配置文件类
+ */
 public class PropertyMgr {
     static Properties props = new Properties();
 

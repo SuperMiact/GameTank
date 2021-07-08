@@ -1,4 +1,6 @@
-package com.gametank;
+package com.gametank.util;
+
+import com.gametank.TankFrame;
 
 import java.awt.*;
 
@@ -24,7 +26,7 @@ public class Explode {
         g.drawImage(ResourceMgr.explodes[step++],x,y,null);
 
         if (step >= ResourceMgr.explodes.length) {
-            tf.explodes.remove(this);
+            tf.getExplodes().remove(this);
         }
     }
 }

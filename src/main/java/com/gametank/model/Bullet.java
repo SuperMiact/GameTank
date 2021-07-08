@@ -1,4 +1,9 @@
-package com.gametank;
+package com.gametank.model;
+
+import com.gametank.*;
+import com.gametank.util.Explode;
+import com.gametank.util.PropertyMgr;
+import com.gametank.util.ResourceMgr;
 
 import java.awt.*;
 
@@ -14,7 +19,7 @@ public class Bullet {
 
     private boolean living = true;
     TankFrame tf = null;
-    private Group group = Group.BAD;
+    private Group group = null;
 
     public Bullet(int x, int y, Dir dir,Group group,TankFrame tf) {
         this.x = x;
@@ -39,7 +44,7 @@ public class Bullet {
 
     public void paint(Graphics g){
         if (!living){
-            tf.bullets.remove(this);
+            tf.getBullets().remove(this);
         }
 
         switch (dir){
@@ -89,8 +94,13 @@ public class Bullet {
         }
     }
 
-    public void collideWith(Tank tank) {
-        if (this.group==tank.getGroup()) {
+    /**
+     * 碰撞逻辑
+     */
+    public void collideWith(Bullet bullet,Tank tank) {
+        System.out.println("bullet:"+ bullet.getGroup());
+        System.out.println("tank:"+ tank.getGroup());
+        if (bullet.getGroup()==tank.getGroup()) {
             return;
         }
 
@@ -99,7 +109,7 @@ public class Bullet {
             this.die();
             int ex = tank.getX() + Tank.WIDTH/2 - Explode.WIDTH/2;
             int ey = tank.getY() + Tank.HEIGHT/2 - Explode.HEIGHT/2;
-            tf.explodes.add(new Explode(ex,ey,tf));
+            tf.getExplodes().add(new Explode(ex,ey,tf));
         }
     }
 

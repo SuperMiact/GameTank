@@ -1,4 +1,4 @@
-package com.gametank;
+package com.gametank.util;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

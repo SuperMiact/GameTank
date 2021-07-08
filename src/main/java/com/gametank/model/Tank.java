@@ -1,4 +1,8 @@
-package com.gametank;
+package com.gametank.model;
+
+import com.gametank.util.PropertyMgr;
+import com.gametank.util.ResourceMgr;
+import com.gametank.TankFrame;
 
 import java.awt.*;
 import java.util.Random;
@@ -75,7 +79,7 @@ public class Tank {
 
     public void paint(Graphics g){
         if (!living){
-            tf.tanks.remove(this);
+            tf.getTanks().remove(this);
         }
         switch (dir){
             case LEFT:
@@ -153,7 +157,7 @@ public class Tank {
         int bx = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
         int by = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
 
-        tf.bullets.add(new Bullet(bx,by,this.dir,this.group,this.tf));
+        tf.getBullets().add(new Bullet(bx,by,this.dir,this.group,this.tf));
     }
 
     public void die() {
